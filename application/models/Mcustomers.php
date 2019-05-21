@@ -18,11 +18,12 @@
 		 	$this->db->order_by('id','desc');
 		 	return $this->db->get($this->_table)->result_array();
 		 }
-		 public function get_customers_by($email)
+		 public function get_customers_by($field, $value)
 		 {
-		 	$this->db->where('email', $email);
+		 	$this->db->where($field, $value);
 		 	return $this->db->get($this->_table)->row_array();
 		 }
+
 		// 
 		 private function _get_datatables_query()
 		 {

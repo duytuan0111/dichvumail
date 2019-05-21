@@ -34,7 +34,21 @@
 					$row[] = $packages->name;
 					$row[] = $packages->description;
 					$row[] = $packages->quota;
-					$row[] = $packages->quota_type;
+					switch ($packages->quota_type) {
+                        case '0':
+                            $row[] = 'không lặp lại';
+                            break;
+                        case '1':
+                            $row[] = 'Theo ngày';
+                            break;
+                        case '2':
+                            $row[] = 'Theo tháng';
+                            break;
+                        
+                        default:
+                            $row[] = 'khác';
+                            break;
+                    }
 					$row[] = $packages->price;
 					$row[] = $packages->status;
 					$row[] = $packages->create_at;

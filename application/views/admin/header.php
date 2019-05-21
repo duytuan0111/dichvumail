@@ -90,6 +90,13 @@ if (!isset($login['user_login']) || !isset($login['user_login_url']) || $login['
                       <li><a href=" <?php echo base_url(); ?>admin/customers_pack/ "> <i class="fa fa-gift"></i> Quản lý giao dịch gói dịch vụ</a></li>
                     </ul>
                   </li>
+                  <li><a><i class="fa fa-credit-card"></i>Phương thức thanh toán<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href=" <?php echo base_url(); ?>admin/payments/ "> <i class="fa fa-credit-card"></i> Danh sách phương thức</a></li>
+                       <li><a href=" <?php echo base_url(); ?>admin/customers_pay/ "> <i class="fa fa-money"></i> Quản lý tài chính người dùng</a></li>
+                    
+                    </ul>
+                  </li>
                   <li><a><i class="fa fa-edit"></i> Bài viết <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form.php">General Form</a></li>

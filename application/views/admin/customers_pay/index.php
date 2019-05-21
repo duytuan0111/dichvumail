@@ -12,7 +12,7 @@
 					</div>
 					<div class="add-new text-right">
 						<a href="<?php echo base_url() ?>admin/admin/export_user" class="btn btn-success">Xuất Excel</a>
-						<button  onclick="add_pack()"  class="btn btn-primary"><i class="fa fa-plus"></i> Thêm </button>
+						<button  onclick="add_cus_pay()"  class="btn btn-primary"><i class="fa fa-plus"></i> Thêm </button>
 						<button  onclick="reload_table()" class="btn btn-default"><i class="fa fa-exchange"></i></i> Tải lại</button>
 					</div>
 				</div>
@@ -21,15 +21,10 @@
 						<thead>
 							<tr>
 								<th>ID</th>
-								<th>Tên gói dịch vụ</th>
-								<th>Mô tả</th>
-								<th>Giới hạn</th>
-								<th>Kiểu gói tin</th>
-								<th>Giá</th>
-								<th>Trạng thái</th>
-								<th>Ngày tạo</th>
-								<th>Ngày sửa</th>
-								<th>Action</th>
+								<th>Tên người dùng</th>
+								<th>Số tiền</th>
+								<th>Nội dung</th>
+								<th>Hành động</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -38,15 +33,10 @@
 						<tfoot>
 							<tr>
 								<th>ID</th>
-								<th>Tên gói dịch vụ</th>
-								<th>Mô tả</th>
-								<th>Giới hạn</th>
-								<th>Kiểu gói tin</th>
-								<th>Giá</th>
-								<th>Trạng thái</th>
-								<th>Ngày tạo</th>
-								<th>Ngày sửa</th>
-								<th>Action</th>
+								<th>Tên người dùng</th>
+								<th>Số tiền</th>
+								<th>Nội dung</th>
+								<th>Hành động</th>
 							</tr>
 						</tfoot>
 					</table>
@@ -70,43 +60,25 @@
 
 							</div>
 							<div class="form-group">
-								<label for="name">Tên gói dịch vụ*</label>
-								<input type="text" name="name" class="form-control" placeholder="Tên gói dịch vụ...">
-							</div>
-							<div class="form-group">
-								<label for="description">Mô tả</label>
-								<textarea class="form-control" name="description" placeholder="Mô tả..."></textarea>
-							</div>
-							<div class="form-group">
-								<label for="quota">Giới hạn*</label>
-								<input type="number" class="form-control" name="quota" placeholder="Hạn ngạch..." >
-							</div>
-							<div class="form-group">
-								<label for="quota_type">Kiểu gói tin*</label>
-								<select class="form-control" name="quota_type">
-									<option value="0">Không lặp lại</option>
-									<option value="1">Theo ngày</option>
-									<option value="2">Theo tháng</option>
+								<label for="customer_id">Họ và tên*</label>
+								<select name="customer_id" class="form-control">
+									<?php foreach ($all_cus as $key ) { ?>
+									<option value=" <?php echo $key['id'] ?> "><?php echo $key['name'] ?></option>
+									<?php } ?>
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="price">Giá*</label>
-								<input type="number" class="form-control" name="price" min="0" placeholder="Giá...">
+								<label for="amount">Số tiền*</label>
+								<input type="number" min="0" class="form-control" name="amount">
 							</div>
 							<div class="form-group">
-								<label for="status">Trạng thái</label> <br>
-								<label class="switch">
-									<input type="checkbox" class="form-control" name="status" value="1">
-									<span class="slider round"></span>
-								</label>
-
+								<label for="content">Nội dung*</label>
+								<textarea class="form-control" name="content" placeholder="Nội dung"></textarea>
+							
+							
+							
 							</div>
-							
-							
-							
-							
-							<?php echo form_close() ?>
-						</div>
+						<?php echo form_close() ?>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
 							<button type="button" id="btnsave" onclick="save()" class="btn btn-primary">Lưu</button>

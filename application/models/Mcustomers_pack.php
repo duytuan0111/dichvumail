@@ -2,25 +2,25 @@
 	/**
 	 * 
 	 */
-	class Mpackages extends CI_Model
+	class Mcustomers_pack extends CI_Model
 	{
-		protected $_table = 'packages';    
-		protected $column_order = array('name','description','price'); //set column field database for datatable orderable     
-		protected $column_search = array('name','description','price'); //set column field database for datatable searchable just firstname , lastname , address are searchable     
+		protected $_table = 'customer_package';    
+		protected $column_order = array('customer_id','package_id','usage'); //set column field database for datatable orderable     
+		protected $column_search = array('customer_id','package_id','usage'); //set column field database for datatable searchable just firstname , lastname , address are searchable     
 		protected $order = array('id' => 'desc'); // default order 
 
 		 function __construct()
 		 {
 		 	parent::__construct();
 		 }
-		 public function get_all_packages()
+		 public function get_all_customers_package()
 		 {
 		 	$this->db->order_by('id','desc');
 		 	return $this->db->get($this->_table)->result_array();
 		 }
-		 public function get_packages_by($field, $value)
+		 public function get_customers_package_by($email)
 		 {
-		 	$this->db->where($field,$value);
+		 	$this->db->where('email', $email);
 		 	return $this->db->get($this->_table)->row_array();
 		 }
 		// 
@@ -108,7 +108,6 @@
     	$this->db->where('id', $id);
     	return $this->db->delete($this->_table);
     }
-    
    
 }
 

@@ -38,10 +38,6 @@
 				$row[] = $users->phone;
 				$row[] = $users->create_at;
 				$row[] = $users->update_at;
-				// if($person->photo)
-				// 	$row[] = '<a href="'.base_url('upload/'.$person->photo).'" target="_blank"><img src="'.base_url('upload/'.$person->photo).'" class="img-responsive" /></a>';
-				// else
-				// 	$row[] = '(No photo)';
 
             //add html for action
 				$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_user('."'".$users->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Sửa</a>
@@ -69,10 +65,13 @@
 
         public function ajax_add()
         {
+            $data = array('status' => FALSE, 'messages' => array());
         	
         	$this->form_validation->set_rules('username','tên đăng nhập','required|trim');
         	$this->form_validation->set_rules('password','Mật khẩu','required|trim');
-        	$this->form_validation->set_rules('fullname','Họ và tên','required|trim');
+            $this->form_validation->set_rules('fullname','Họ và tên','required|trim');
+            $this->form_validation->set_rules('email','Email','required|trim');
+        	$this->form_validation->set_rules('phone','Số điện thoại','required|trim');
         	$response = array();
         	if ($this->form_validation->run() == TRUE) {
         		$data = array(
@@ -91,18 +90,17 @@
 
 
         		$insert = $this->Musers->save($data);
+                echo json_encode(array("status" => TRUE));
 
-        		$response = array(
-        			'status' => true,
-        			'errors' => array(
-        				'username' => form_error('username'),
-        				'password' => form_error('password'),
-        				'fullname' => form_error('fullname')
-        			)
-        		);
-
-        		echo json_encode(array("status" => TRUE));
+        		
         	}
+            else{
+                foreach ($_POST as $key ) {
+                    $data['messages'][$key] = form_error($key);
+                }
+            }
+            
+            
 
         	
 
@@ -136,14 +134,7 @@
         	$this->Musers->delete_by_id($id);
         	echo json_encode(array("status" => TRUE));
         }
-       //  public function _validate()
-       //  {
-       //     if($this->input->server('REQUEST_METHOD') == 'POST' && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') 
-       //     {
 
-       //     }
-
-       // }
        public function check_username()
        {
         $username = trim($this->input->post('username'));

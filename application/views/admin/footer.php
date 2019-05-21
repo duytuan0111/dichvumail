@@ -47,6 +47,9 @@
     <script src=" <?php echo base_url();?>public/Datatable/js/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url(); ?>public/admin/js/pages/users.js"></script>
     <script src="<?php echo base_url(); ?>public/admin/js/pages/customers.js"></script>
+    <script src="<?php echo base_url(); ?>public/admin/js/pages/customers_pack.js"></script>
+    <script src="<?php echo base_url(); ?>public/admin/js/pages/customers_pay.js"></script>
+    <script src="<?php echo base_url(); ?>public/admin/js/pages/payments.js"></script>
     <script src="<?php echo base_url(); ?>public/admin/js/pages/packages.js"></script>
     <script src="<?php echo base_url(); ?>public/vendors/bootstrap-toggle-master/js/bootstrap-toggle.min.js"></script>
 	

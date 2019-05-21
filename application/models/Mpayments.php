@@ -2,23 +2,23 @@
 	/**
 	 * 
 	 */
-	class Mpackages extends CI_Model
+	class Mpayments extends CI_Model
 	{
-		protected $_table = 'packages';    
-		protected $column_order = array('name','description','price'); //set column field database for datatable orderable     
-		protected $column_search = array('name','description','price'); //set column field database for datatable searchable just firstname , lastname , address are searchable     
+		protected $_table = 'payments';    
+		protected $column_order = array('name','description'); //set column field database for datatable orderable     
+		protected $column_search = array('name','description'); //set column field database for datatable searchable just firstname , lastname , address are searchable     
 		protected $order = array('id' => 'desc'); // default order 
 
 		 function __construct()
 		 {
 		 	parent::__construct();
 		 }
-		 public function get_all_packages()
+		 public function get_all_payments()
 		 {
 		 	$this->db->order_by('id','desc');
 		 	return $this->db->get($this->_table)->result_array();
 		 }
-		 public function get_packages_by($field, $value)
+		 public function get_payments_by($field, $value)
 		 {
 		 	$this->db->where($field,$value);
 		 	return $this->db->get($this->_table)->row_array();
